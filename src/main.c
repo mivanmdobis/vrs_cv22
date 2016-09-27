@@ -82,6 +82,12 @@ int main(void)
   while (1)
  {
 	i++;
+
+	GPIOA->ODR |= (uint16_t) 1 << 5;
+	 for (i = 0; i < 50000; i++);
+	 GPIOA->ODR &= ~(uint16_t) 1 << 5;
+	 for (i = 0; i < 50000; i++);
+
   }
   return 0;
 }
