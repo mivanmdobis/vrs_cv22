@@ -85,14 +85,45 @@ int main(void)
    GPIOC->OTYPER &= ~((uint16_t) 1 << 26);
    GPIOC->PUPDR &= ~((uint16_t) 1 << 26);
 
+   int LEDon = 0;
+   int pushButton = 0;
+
+   int counterUp  = 0;
+   int counterDown = 0;
   while (1)
  {
 	i++;
 
 	if (GPIOC->IDR&((uint16_t) 1 << 13)){
-		GPIOA->ODR &= ~(uint16_t) 1 << 5;
+		counterUp++;
+
+		if (counterUp == 5){
+			pushButton = 0;
+			counterDown = 0;
+		}
+
 	}else{
-		GPIOA->ODR |= (uint16_t) 1 << 5;
+		counterDown++;
+
+		if (counterDown == 0){
+			pushButton = 1;
+			counterUp = 0;
+		}
+
+	}
+
+
+
+
+		if (pushButton && LEDon){
+			GPIOA->ODR &= ~(uint16_t) 1 << 5;
+			LEDon = 0;
+
+		}else{
+			LEDon = 1;
+			GPIOA->ODR |= (uint16_t) 1 << 5;
+		}
+
 	}
 
 	//GPIOA->ODR |= (uint16_t) 1 << 5;
