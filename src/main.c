@@ -84,7 +84,9 @@ int main(void)
    GPIOC->MODER &= ~((uint16_t) 1 << 26);
    GPIOC->OTYPER &= ~((uint16_t) 1 << 26);
    GPIOC->PUPDR &= ~((uint16_t) 1 << 26);
-
+   int oldButtonState = 0;
+   int newButtonState = 0;
+   int x=0;
   /* int LEDon = 0;
    int pushButton = 0;
 
@@ -92,10 +94,38 @@ int main(void)
    int counterDown = 0;*/
   while (1)
  {
- if(GPIOC->IDR & (uint16_t)1<<13){
+
+
+   // Get the current state of the button
+	 if(GPIOC->IDR & (uint16_t)1<<13){
+		 for (i = 0; i < 250; i++);
+		 if(GPIOC->IDR & (uint16_t)1<<13){
+		 newButtonState=0;}
+
+ else	{
+	 newButtonState=1;}
+	 }
+   if (newButtonState == 1 && oldButtonState == 0) {
+     if (x == 0) {
+    	 GPIOA->ODR &= ~(uint16_t) 1 << 5;
+       x = 1;
+     } else {
+    	 GPIOA->ODR |= (uint16_t) 1 << 5;
+       x = 0;
+     }
+
+   }
+
+   // Store the button's state so we can tell if it's changed next time round
+   oldButtonState = newButtonState;
+
+
+
+
+/* if(GPIOC->IDR & (uint16_t)1<<13){
 	 GPIOA->ODR &= ~(uint16_t) 1 << 5;
  }
- else { GPIOA->ODR |= (uint16_t) 1 << 5;}
+ else { GPIOA->ODR |= (uint16_t) 1 << 5;}*/
 
 	/*GPIOA->ODR |= (uint16_t) 1 << 5;
 	 for (i = 0; i < 50000; i++);
