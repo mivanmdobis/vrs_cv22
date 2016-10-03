@@ -92,6 +92,10 @@ int main(void)
    int counterDown = 0;*/
   while (1)
  {
+ if(GPIOC->IDR & (uint16_t)1<<13){
+	 GPIOA->ODR &= ~(uint16_t) 1 << 5;
+ }
+ else { GPIOA->ODR |= (uint16_t) 1 << 5;}
 
 	/*GPIOA->ODR |= (uint16_t) 1 << 5;
 	 //for (i = 0; i < 50000; i++);
