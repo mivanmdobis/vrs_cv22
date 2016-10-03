@@ -81,55 +81,18 @@ int main(void)
    GPIOA->PUPDR |= (uint16_t)(0b01) << 10;
    GPIOA->OSPEEDR |= (uint16_t)(0b11) << 10;
 
-   GPIOC->MODER &= ~((uint16_t) 1 << 26);
+  /* GPIOC->MODER &= ~((uint16_t) 1 << 26);
    GPIOC->OTYPER &= ~((uint16_t) 1 << 26);
-   GPIOC->PUPDR &= ~((uint16_t) 1 << 26);
+   GPIOC->PUPDR &= ~((uint16_t) 1 << 26);*/
 
-   int LEDon = 0;
+  /* int LEDon = 0;
    int pushButton = 0;
 
    int counterUp  = 0;
-   int counterDown = 0;
+   int counterDown = 0;*/
   while (1)
  {
 	i++;
-
-	if (GPIOC->IDR&((uint16_t) 1 << 13)){
-		counterUp++;
-
-		if (counterUp == 5){
-			pushButton = 0;
-			counterDown = 0;
-		}
-
-	}else{
-		counterDown++;
-
-		if (counterDown == 0){
-			pushButton = 1;
-			counterUp = 0;
-		}
-
-	}
-
-
-
-
-		if (pushButton && LEDon){
-			GPIOA->ODR &= ~(uint16_t) 1 << 5;
-			LEDon = 0;
-
-		}else{
-			LEDon = 1;
-			GPIOA->ODR |= (uint16_t) 1 << 5;
-		}
-
-	}
-
-	//GPIOA->ODR |= (uint16_t) 1 << 5;
-	 //for (i = 0; i < 50000; i++);
-	 //GPIOA->ODR &= ~(uint16_t) 1 << 5;
-	 //for (i = 0; i < 50000; i++);
 
   }
   return 0;
@@ -152,6 +115,7 @@ void assert_failed(uint8_t* file, uint32_t line)
   /* Infinite loop */
   while (1)
   {
+
   }
 }
 #endif
