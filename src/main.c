@@ -86,7 +86,7 @@ int main(void)
 
    GPIO_Init(GPIOC, &gpioInit);
 
- //  uint8_t buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+  uint8_t buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
  /* RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
@@ -109,7 +109,7 @@ int main(void)
    int counterDown = 0;*/
    //uint8_t BUTTON=0;
   while (1)
- {	//buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+ {	buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	 // BUTTON = buttonState;
 	  /* GPIO_SetBits(GPIOA, GPIO_Pin_5);
