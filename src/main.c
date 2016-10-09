@@ -116,11 +116,11 @@ int main(void)
 	   		 for (i = 0; i < 50000; i++);
 	   		 GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	   		 for (i = 0; i < 50000; i++);*/
-	/* if (buttonState)
+	 /* if (buttonState)
 	  		     GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	  		 else
 	  	GPIO_SetBits(GPIOA, GPIO_Pin_5);*/
-
+/*
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
 		 for (i = 0; i < 25; i++);
@@ -159,6 +159,27 @@ int main(void)
 	 /*GPIOA->BSRRH|= (uint16_t) 1 << 5;
 	 GPIOA->BSRRL &= ~(uint16_t) 1 << 5;
 	 GPIOA->BSRRL ^= (uint16_t) 1 << 5;*/
+ if(buttonState){
+ 	   		 for (i = 0; i < 250; i++);
+ 	   		 if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)){
+ 	   		 newButtonState=0;}
+
+ 	    else	{
+ 	   	 newButtonState=1;}
+ 	   	 }
+
+ 	      if (newButtonState == 1 && oldButtonState == 0) {
+ 	        if (x == 0) {
+ 	        	GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+ 	          x = 1;
+ 	        } else {
+ 	        	GPIO_SetBits(GPIOA, GPIO_Pin_5);
+ 	          x = 0;
+ 	        }
+
+ 	      }
+
+ 	      oldButtonState = newButtonState;
   }
   return 0;
 }
