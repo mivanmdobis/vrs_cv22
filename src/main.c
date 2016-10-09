@@ -112,14 +112,14 @@ int main(void)
  {	buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 	 // GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	 // BUTTON = buttonState;
-	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	 /* GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	   		 for (i = 0; i < 50000; i++);
 	   		 GPIO_ResetBits(GPIOA, GPIO_Pin_5);
-	   		 for (i = 0; i < 50000; i++);
-	 /* if (buttonState)
+	   		 for (i = 0; i < 50000; i++);*/
+	 if (buttonState)
 	  		     GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	  		 else
-	  	GPIO_SetBits(GPIOA, GPIO_Pin_5);*/
+	  	GPIO_SetBits(GPIOA, GPIO_Pin_5);
 /*
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
