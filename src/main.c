@@ -99,7 +99,7 @@ int main(void)
    int counterDown = 0;*/
   while (1)
  {
-
+	   GPIO_SetBits(GPIOA, GPIO_Pin_5);
 /*
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
