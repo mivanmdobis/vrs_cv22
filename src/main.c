@@ -77,6 +77,14 @@ int main(void)
   gpioInit.GPIO_Pin = GPIO_Pin_5;
   gpioInit.GPIO_Speed = GPIO_Speed_40MHz;
   GPIO_Init(GPIOA, &gpioInit);
+
+  gpioInit.GPIO_Mode = GPIO_Mode_IN;
+   gpioInit.GPIO_PuPd = GPIO_PuPd_NOPULL;
+   gpioInit.GPIO_Pin = GPIO_Pin_13;
+
+   GPIO_Init(GPIOC, &gpioInit);
+
+   uint8_t buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
  /* RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
@@ -98,7 +106,7 @@ int main(void)
    int counterUp  = 0;
    int counterDown = 0;*/
   while (1)
- {
+ {	buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 	   GPIO_SetBits(GPIOA, GPIO_Pin_5);
 /*
    // Get the current state of the button
