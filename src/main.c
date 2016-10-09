@@ -98,10 +98,10 @@ int main(void)
 
    GPIOC->MODER &= ~((uint16_t) 1 << 26);
    GPIOC->OTYPER &= ~((uint16_t) 1 << 26);
-   GPIOC->PUPDR &= ~((uint16_t) 1 << 26);
+   GPIOC->PUPDR &= ~((uint16_t) 1 << 26);*/
    int oldButtonState = 0;
    int newButtonState = 0;
-   int x=0;*/
+   int x=0;
   /* int LEDon = 0;
    int pushButton = 0;
 
@@ -116,11 +116,11 @@ int main(void)
 	   		 for (i = 0; i < 50000; i++);
 	   		 GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	   		 for (i = 0; i < 50000; i++);*/
-	 if (buttonState)
+	/* if (buttonState)
 	  		     GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 	  		 else
-	  	GPIO_SetBits(GPIOA, GPIO_Pin_5);
-/*
+	  	GPIO_SetBits(GPIOA, GPIO_Pin_5);*/
+
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
 		 for (i = 0; i < 25; i++);
