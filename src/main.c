@@ -71,8 +71,13 @@ int main(void)
 
 
   /* Infinite loop */
-
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+  GPIO_InitTypeDef gpioInit;
+  gpioInit.GPIO_Mode = GPIO_Mode_OUT;
+  gpioInit.GPIO_OType = GPIO_OType_PP;
+  gpioInit.GPIO_Pin = GPIO_Pin_5;
+  gpioInit.GPIO_Speed = GPIO_Speed_40MHz;
+  GPIO_Init(GPIOA, &gpioInit);
+ /* RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
@@ -86,7 +91,7 @@ int main(void)
    GPIOC->PUPDR &= ~((uint16_t) 1 << 26);
    int oldButtonState = 0;
    int newButtonState = 0;
-   int x=0;
+   int x=0;*/
   /* int LEDon = 0;
    int pushButton = 0;
 
@@ -95,10 +100,10 @@ int main(void)
   while (1)
  {
 
-
+/*
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
-		 for (i = 0; i < 250; i++);
+		 for (i = 0; i < 25; i++);
 		 if(GPIOC->IDR & (uint16_t)1<<13){
 		 newButtonState=0;}
 
