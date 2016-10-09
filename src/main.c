@@ -110,7 +110,7 @@ int main(void)
    uint8_t BUTTON=0;
   while (1)
  {	//buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	//   GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	 // BUTTON = buttonState;
 	  /* GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	   		 for (i = 0; i < 50000; i++);
