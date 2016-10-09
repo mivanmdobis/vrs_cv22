@@ -107,10 +107,13 @@ int main(void)
    int counterDown = 0;*/
    uint8_t BUTTON=0;
   while (1)
- {	buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+ {	//buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+	 //  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	 // BUTTON = buttonState;
 	   GPIO_SetBits(GPIOA, GPIO_Pin_5);
-	   BUTTON = buttonState;
-
+	   		 for (i = 0; i < 50000; i++);
+	   		 GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	   		 for (i = 0; i < 50000; i++);
 /*
    // Get the current state of the button
 	 if(GPIOC->IDR & (uint16_t)1<<13){
